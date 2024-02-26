@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
-  plugins: [new Dotenv()],
+  plugins: [new Dotenv({ systemvars: true })],
   // Optional and for development only. This provides the ability to
   // map the built code back to the original source format when debugging.
   devtool: "eval-source-map",
