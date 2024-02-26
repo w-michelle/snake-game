@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/app.js",
   // The location of the build folder described above
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
   plugins: [new Dotenv()],
