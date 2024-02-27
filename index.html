@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Snake Game</title>
+    <link rel="shortcut icon" type="image/jpg" href="./favicon.jpg" />
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
@@ -11,16 +12,28 @@
     />
   </head>
   <body>
-    <div>
-      <div class="scores">
-        <p class="score">000</p>
+    <nav>
+      <ul>
+        <li class="nav-item">SNAKE GAME</li>
+        <li class="nav-item">
+          <a id="mlink" href="https://cyberbubble.vercel.app" target="_blank"
+            >MICHELLE'S PORTFOLIO</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <main class="game">
+      <div>
+        <div class="scores">
+          <p class="score">000</p>
+        </div>
+        <div class="border-1">
+          <div class="grid"></div>
+        </div>
       </div>
-      <div class="border-1">
-        <div class="grid"></div>
-      </div>
-    </div>
-    <h1 class="instruction">Press Space to Start</h1>
-    <div class="end"></div>
+      <p class="instruction">Press Space to Start</p>
+      <div class="end"></div>
+    </main>
     <script src="./public/bundle.js"></script>
   </body>
 </html>

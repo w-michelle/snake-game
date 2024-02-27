@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
- 
-    "build": "webpack --mode=production"
+    "build": "webpack --watch --mode=development"
+   
   },
   "author": "",
   "license": "ISC",

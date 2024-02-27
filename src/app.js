@@ -8,8 +8,10 @@ const $score = document.querySelector(".score");
 const $instruction = document.querySelector(".instruction");
 const $end = document.querySelector(".end");
 
+// "build": "webpack --mode=production"
+
 let food = createFood();
-let snakehead = [{ x: 21, y: 21 }];
+let snakehead = [{ x: 16, y: 16 }];
 let startedGame = false;
 let direction = "right";
 let gameSpeedDelay = 100;
@@ -57,8 +59,8 @@ function drawfood() {
 }
 
 function createFood() {
-  let x = Math.floor(Math.random() * 41) + 1;
-  let y = Math.floor(Math.random() * 41) + 1;
+  let x = Math.floor(Math.random() * 31) + 1;
+  let y = Math.floor(Math.random() * 31) + 1;
 
   return { x, y };
 }
@@ -89,7 +91,6 @@ function move() {
     clearInterval(gameInterval);
     gameInterval = setInterval(() => {
       move();
-      console.log(gameSpeedDelay);
       checkCollision();
       draw();
     }, gameSpeedDelay);
@@ -99,7 +100,7 @@ function move() {
 }
 function increaseSpeed() {
   if (gameSpeedDelay > 60) {
-    gameSpeedDelay -= 20;
+    gameSpeedDelay -= 5;
   } else if (gameSpeedDelay > 30) {
     gameSpeedDelay -= 3;
   } else {
@@ -109,7 +110,7 @@ function increaseSpeed() {
 function checkCollision() {
   const head = snakehead[0];
   //check if head is hitting walls
-  if (head.x < 1 || head.x > 41 || head.y < 1 || head.y > 41) {
+  if (head.x < 1 || head.x > 31 || head.y < 1 || head.y > 31) {
     resetGame();
   }
   //check if head is hitting body
@@ -173,14 +174,13 @@ function resetGame() {
   }
 }
 function resetState() {
-  snakehead = [{ x: 21, y: 21 }];
+  snakehead = [{ x: 16, y: 16 }];
   food = createFood();
   direction = "right";
   gameSpeedDelay = 100;
   updateScore();
 }
 function enterScore() {
-  console.log("score func");
   let markup = `
     <div class="gameover">
     <h1>Game Over</h1>
@@ -189,7 +189,6 @@ function enterScore() {
     <input
       placeholder="XXX"
       type="text"
-
       minlength="3"
       maxlength="3"
       class="name"
@@ -197,6 +196,7 @@ function enterScore() {
     />
     <button class="submitScore">SAVE</button>
   </form>
+  <button class="return">return to game</button>
   </div>
   `;
   $end.innerHTML = markup;
@@ -218,7 +218,6 @@ async function handleSubmitScore(e) {
     let name = document.querySelector(".name");
 
     if (name.value.length === 3 && /^[a-zA-Z]{3}$/.test(name.value)) {
-      console.log("called here");
       await addDoc(collection(db, "scores"), {
         score: currentScore,
         name: name.value.toUpperCase(),
@@ -226,6 +225,9 @@ async function handleSubmitScore(e) {
 
       updateHighScore();
     }
+  } else if (e.target && e.target.matches(".return")) {
+    resetState();
+    $end.innerHTML = "";
   }
 }
 async function updateHighScore() {
@@ -251,7 +253,7 @@ async function updateHighScore() {
     });
     markup += `   
     </div>
-    <h1 id="instruction">Press spacebar to start the game</h1>
+    <p id="instruction">Press spacebar to start the game</p>
   </div>
 `;
     $end.innerHTML = markup;

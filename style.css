@@ -5,22 +5,40 @@
 }
 
 body {
+  font-family: "VT323", monospace;
+}
+nav {
+  font-size: 1.3rem;
+  padding: 2rem;
+  margin-bottom: 6rem;
+}
+#mlink {
+  text-decoration-color: #001bff;
+  color: black;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.game {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-family: "VT323", monospace;
+  height: 100%;
 }
 .scores {
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(41, 12px);
-  grid-template-rows: repeat(41, 12px);
+  grid-template-columns: repeat(31, 15px);
+  grid-template-rows: repeat(31, 15px);
 }
 
 .border-1 {
@@ -28,24 +46,27 @@ body {
 }
 .snake {
   background-color: rgb(28, 27, 27);
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   border: #999 1px dotted;
 }
 .food {
   background-color: #001bff;
-  width: 12px;
-  height: 12px;
+  border: 1px dotted rgb(194, 194, 194);
+  width: 15px;
+  height: 15px;
 }
 .instruction {
   position: absolute;
   padding: 10px 14px;
   text-transform: capitalize;
   animation: blinker 2s linear infinite;
+  font-size: 1.2rem;
 }
 #instruction {
   text-transform: capitalize;
   animation: blinker 2s linear infinite;
+  font-size: 1.2rem;
 }
 
 @keyframes blinker {
@@ -63,14 +84,20 @@ body {
   font-family: "VT323", monospace;
   letter-spacing: 10px;
   border: none;
+  color: #001bff;
 }
 .submitScore {
   padding: 1.2rem;
   background-color: black;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "VT323", monospace;
   letter-spacing: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.submitScore:hover {
+  background-color: #001bff;
 }
 .gameover {
   position: absolute;
@@ -121,17 +148,29 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   width: 100%;
 }
-.submitScore {
+
+.return {
+  padding: 1.2rem;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  font-size: 1.3rem;
+  font-family: "VT323", monospace;
+  letter-spacing: 6px;
+  text-transform: uppercase;
   cursor: pointer;
+}
+.return:hover {
+  background-color: black;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
   .grid {
     display: grid;
-    grid-template-columns: repeat(21, 12px);
-    grid-template-rows: repeat(21, 12px);
+    grid-template-columns: repeat(21, 11px);
+    grid-template-rows: repeat(21, 11px);
   }
 }
