@@ -4,11 +4,8 @@ import { db } from "../utils/firebase";
 
 const $grid = document.querySelector(".grid");
 const $score = document.querySelector(".score");
-
 const $instruction = document.querySelector(".instruction");
 const $end = document.querySelector(".end");
-
-// "build": "webpack --mode=production"
 
 let food = createFood();
 let snakehead = [{ x: 16, y: 16 }];
