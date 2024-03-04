@@ -12,6 +12,11 @@ nav {
   padding: 2rem;
   margin-bottom: 6rem;
 }
+.tools {
+  font-size: 1rem;
+  color: #999999c2;
+  letter-spacing: 2px;
+}
 #mlink {
   text-decoration-color: #001bff;
   color: black;
